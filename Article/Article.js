@@ -117,7 +117,15 @@ const data = [
 
 //   return articleButtons
 // }
+const newArticle = {
+  title: 'You won\'t beleive these ten facts about hollywood stars',
+  date: 'Jan 32nd, 2020',
+  firstParagraph: 'This is paragraph one',
+  secondParagraph: 'This is paragraph two.',
+  thirdParagraph: 'STOP READING THIS'
+}
 
+data.push(newArticle)
 
 const articleMaker = (title, content1, content2, content3, date) => {
   const article = document.createElement('div')
@@ -161,6 +169,7 @@ const articles = document.querySelector('.articles')
 data.forEach(item => {
   articles.appendChild(articleMaker(item.title, item.firstParagraph, item.secondParagraph, item.thirdParagraph, item.date))
 })
+
 
 
 /*
