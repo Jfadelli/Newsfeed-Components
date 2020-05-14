@@ -89,7 +89,90 @@ const data = [
 ];
 
 /* Step 1: Write a component called 'articleMaker' to create an article. You want your component to return markup like the template below: 
+*/
 
+// const buttonContainer = (articleContent) => {
+//   const 
+//   const articleButton = document.createElement('span')
+//   // const btnOpen = document.createElement('button')
+//   // const btnClose = document.createElement('button')
+//   // articleButton.appendChild(btnOpen)
+//   // articleButton.appendChild(btnClose)
+
+//   articleButton.classList.add('article-open')
+//   btnOpen.classList.add('article-open')
+//   btnClose.classList.add('article-open')
+
+//   articleContent.classList.toggle('toggle-on')
+
+//   articleButton.addEventListener('click', () => {
+//     btnOpen.classList.toggle('article-open')
+//     btnClose.classList.toggle('close')
+//   })
+
+//   const open = '\u25bc'
+//   btnOpen.textContent = open
+//   const close = '\u25b2'
+//   btnClose.textContent = close
+
+//   return articleButtons
+// }
+const newArticle = {
+  title: 'You won\'t beleive these ten facts about hollywood stars',
+  date: 'Jan 32nd, 2020',
+  firstParagraph: 'This is paragraph one',
+  secondParagraph: 'This is paragraph two.',
+  thirdParagraph: 'STOP READING THIS'
+}
+
+data.push(newArticle)
+
+const articleMaker = (title, content1, content2, content3, date) => {
+  const article = document.createElement('div')
+  const articleTitle = document.createElement('h2')
+  const articleDate = document.createElement('p')
+  const articleContentP1 = document.createElement('p')
+  const articleContentP2 = document.createElement('p')
+  const articleContentP3 = document.createElement('p')
+
+  const articleButton = document.createElement('span')
+  articleButton.classList.add('expandButton')
+  articleButton.addEventListener('click', () => {
+    article.classList.toggle('article-open')
+  })
+
+  const buttonUni = '\u25bc'
+  articleButton.textContent = buttonUni
+
+  article.appendChild(articleTitle)
+  article.appendChild(articleDate)
+  article.appendChild(articleContentP1)
+  article.appendChild(articleContentP2)
+  article.appendChild(articleContentP3)
+  article.appendChild(articleButton)
+
+
+  article.classList.add('article')
+  articleTitle.classList.add('h2')
+  articleDate.classList.add('date')
+
+  articleTitle.textContent = title;
+  articleContentP1.textContent = content1;
+  articleContentP2.textContent = content2
+  articleContentP3.textContent = content3
+  articleDate.textContent = date;
+
+  return article
+}
+
+const articles = document.querySelector('.articles')
+data.forEach(item => {
+  articles.appendChild(articleMaker(item.title, item.firstParagraph, item.secondParagraph, item.thirdParagraph, item.date))
+})
+
+
+
+/*
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
